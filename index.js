@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 	res.send("Benvenuto sul nostro server");
 });
 
-app.use("/books", bookRouter);
+app.use("/api/books", bookRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorsHandlerMiddleware);
