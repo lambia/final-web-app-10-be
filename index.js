@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 3000;
 
+const bookRouter = require("./routers/bookRouter");
 const errorsHandlerMiddleware = require("./middlewares/errorsHandler");
 const notFoundMiddleware = require("./middlewares/notFound");
 
@@ -15,9 +15,11 @@ app.get("/", (req, res) => {
 	res.send("Benvenuto sul nostro server");
 });
 
+app.use("/books", bookRouter);
+
 app.use(notFoundMiddleware);
 app.use(errorsHandlerMiddleware);
 
-app.listen(port, () => {
-	console.log(`Express avviato correttamente su http://localhost:${port}/`);
+app.listen(process.env.APP_PORT, () => {
+	console.log(`Express avviato correttamente su http://localhost:${process.env.APP_PORT}/`);
 });

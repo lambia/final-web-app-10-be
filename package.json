@@ -2,12 +2,13 @@
 	"name": "final-web-app-10-be",
 	"version": "1.0.0",
 	"scripts": {
-		"dev": "node --watch index.js"
+		"dev": "node --env-file=.env --watch index.js"
 	},
 	"author": "Luca Lambiase",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
-		"express": "^5.2.1"
+		"express": "^5.2.1",
+		"mysql2": "^3.20.0"
 	}
 }
