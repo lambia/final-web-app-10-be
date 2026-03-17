@@ -1,0 +1,13 @@
+{
+	"name": "final-web-app-10-be",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "node --watch index.js"
+	},
+	"author": "Luca Lambiase",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"express": "^5.2.1"
+	}
+}
