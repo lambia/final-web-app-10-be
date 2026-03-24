@@ -9,7 +9,7 @@ const notFoundMiddleware = require("./middlewares/notFound");
 const corsConfig = { origin: process.env.FE_URL };
 app.use(cors(corsConfig));
 
-app.use(express.static("public"));
+app.use("/static/", express.static("public"));
 
 app.use(express.json());
 
