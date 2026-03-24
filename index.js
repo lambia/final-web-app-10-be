@@ -1,9 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 const bookRouter = require("./routers/bookRouter");
 const errorsHandlerMiddleware = require("./middlewares/errorsHandler");
 const notFoundMiddleware = require("./middlewares/notFound");
+
+const corsConfig = { origin: process.env.FE_URL };
+app.use(cors(corsConfig));
 
 app.use(express.static("public"));
 
