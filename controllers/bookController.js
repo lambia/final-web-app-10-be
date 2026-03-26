@@ -59,4 +59,29 @@ function show(req, res) {
 	});
 }
 
-module.exports = { index, show };
+function storeReview(req, res) {
+
+	// const id = req.params.id;
+	const { id } = req.params;
+
+	const { text, name, vote } = req.body;
+
+	// console.log("Inserisci recensione", id, text, name, vote);
+
+	const sqlQuery = "INSERT INTO reviews (text,name,vote,book_id) VALUES (?,?,?,?)";
+
+	db.query(sqlQuery, [text, name, vote, id], (err, results) => {
+
+		if (err) {
+			return res.status(500).json({
+				error: "Database query error",
+				message: err.message
+			});
+		}
+
+		res.status(201).json({ message: "Review added", success: true, id: results.insertId });
+
+	});
+}
+
+module.exports = { index, show, storeReview };
