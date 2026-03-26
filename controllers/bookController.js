@@ -17,7 +17,7 @@ function index(req, res) {
 function show(req, res) {
 	const id = req.params.id;
 
-	const sqlQueryBooks = "SELECT * FROM books WHERE id = ?";
+	const sqlQueryBooks = "SELECT books.*, ROUND(AVG(reviews.vote)) AS average_review FROM books LEFT JOIN reviews ON reviews.book_id = books.id WHERE books.id = ?";
 	const sqlQueryReviews = "SELECT * FROM reviews WHERE book_id = ?";
 
 	db.query(sqlQueryBooks, [id], (err, books) => {
@@ -34,6 +34,7 @@ function show(req, res) {
 		}
 
 		const book = books[0];
+		book.average_review = Number(book.average_review);
 		console.log("book iniziale", book);
 
 		db.query(sqlQueryReviews, [id], (err, reviews) => {
